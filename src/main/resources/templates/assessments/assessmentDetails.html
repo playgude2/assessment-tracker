@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<h1><span th:text="${module.StartYear}"></span> Module: <span th:text="${module.moduleName}"></span>
+    <a th:href="@{/module/{id} (id=${module.id})}"><span th:text="${module.moduleNumber}"></span></a></h1>
+<h2>Assessment:  <span th:text="${assessment.assessmentName}"></span> </h2>
+<h2>weighting:  <span th:text="${assessment.weighting}"></span></h2>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+            <tr><td><a th:href="@{/assessment/ready/{id} (id=${assessment.id})}">The assessment is ready </a></td>
+                <td th:text="${assessment.assessmentReady}"></td>
+            </tr>
+            <tr><td>Ready Date</td><td th:text="${assessment.readyDate}"></td></tr>
+            <tr><td><a th:href="@{/assessment/moderatorReview/{id} (id=${assessment.id})}">Internally moderated</a></td>
+                <td th:text="${assessment.intModerated}"></td>
+            </tr>
+            <tr><td>Internally moderated Date</td><td th:text="${assessment.intModeratedDate}"></td></tr>
+            <tr><td>Internally moderated comments</td><td th:text="${assessment.intModComments}"></td></tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+
+<div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>

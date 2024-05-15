@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>index</th> <th>FirstName</th> <th>LastName</th> <th>email</th>
+        </thead>
+        <tbody>
+        <tr th:each="user, iStat : ${users}">
+            <td th:text="${iStat.index}"></td>
+            <td><a th:href="@{/user/{id} (id=${user.id})}" th:text="${user.firstName}"></a></td>
+            <td th:text="${user.lastName}"></td> <td th:text="${user.emailAddress}"></td>
+
+        </tbody>
+
+    </table>
+</div>
+<div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>

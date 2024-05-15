@@ -1,0 +1,48 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'jacoco'
+}
+
+group = 'uk.ac.cf.cs'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	//from https://mariadb.com/kb/en/java-connector-using-gradle/
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+	implementation 'junit:junit:4.12'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'com.h2database:h2'
+
+	testImplementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.32'
+	testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.0'
+}
+
+jar{ enabled = true }
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

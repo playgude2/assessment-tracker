@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+
+<h2>List of modules and Assessments</h2>
+<div th:replace="fragments/components :: yearPicker"/></div>
+
+<div th:replace="fragments/moduleAssessmentTables :: moduleAssessmentTable(modules=${modules})"/></div>
+
+
+<div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>

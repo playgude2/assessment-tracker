@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <span th:fragment="bootstrap-css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+              crossorigin="anonymous">
+        <link href="/css/siteStyle.css" rel="stylesheet">
+
+    </span>
+
+</head>
+<body>
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light" >
+            <a class="navbar-brand" href="/modules">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<!--                <a class="navbar-brand" href="/"></a>-->
+<!--                <span sec:authentication="name"></span>-->
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/module">Modules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/assessment">Assessments</a>
+                    </li>
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Admin-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a class="dropdown-item" href="/Admin/AddItem">Add Item</a>-->
+<!--                            <a class="dropdown-item" href="/Admin/DeleteItem">Delete Item</a>                        <a class="dropdown-item" href="#">Another action</a>-->
+<!--                            <div class="dropdown-divider"></div>-->
+<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <form th:action="@{/logout}" th:method="post">-->
+<!--                            <input type="submit" value="logout"/>-->
+<!--                            <input name="${_csrf.parameterName}"-->
+<!--                                   type="hidden"-->
+<!--                                   value="${_csrf.token}"/>-->
+<!--                        </form>-->
+<!--                    </li>-->
+                </ul>
+                <span>Default Start Year 2023(hardCoded)</span>
+            </div>
+        </nav>
+    </header>
+
+
+</body>
+</html>

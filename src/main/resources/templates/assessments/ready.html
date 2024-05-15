@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <h1><span th:text="${module.StartYear}"></span> Module: <span th:text="${module.moduleName}"></span>
+        <a th:href="@{/module/{id} (id=${module.id})}"><span th:text="${module.moduleNumber}"></span></a></h1>
+    <h2>Module Leader Assessment ready form:</h2>
+    Assessment Name: <a th:href="@{/assessment/{id} (id=${assessment.id})}"><span th:text="${assessment.assessmentName}" type="text"></span></a><br>
+
+    <form th:action="@{/assessment/ready/{id} (id=${assessment.id})}" method="POST" id="readyForm" name="readyForm" th:object="${assessment}">
+        <input th:field="*{id}" type="hidden" th:value="0"/>
+        <input th:field="*{moduleID}" type="hidden" th:value="0"/>
+
+        <label>Assessment is ready:
+            <input th:field="*{assessmentReady}" type="checkbox">
+        </label><br>
+        <div th:errors="*{assessmentReady}" th:if="${#fields.hasErrors('assessmentReady')}">assessmentReady Error</div>
+
+        <label>Ready Date:
+            <input th:field="*{readyDate}" type="date" required name="readyDate">
+        </label><br>
+        <div th:errors="*{readyDate}" th:if="${#fields.hasErrors('readyDate')}">readyDate Error</div>
+
+        <input type="submit" value="Edit">
+    </form>
+
+
+    <div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>

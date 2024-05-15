@@ -1,0 +1,27 @@
+<div th:fragment="moduleAssessmentTable(modules)">
+    <table class="borderTable">
+        <thead>
+        <tr>
+            <th>Index</th><th>StartYear</th><th>Name</th><th>Number</th><th>Assessment Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aNm, iStat : ${modules}">
+            <td th:text="${iStat.index}"></td>
+            <td th:text="${aNm.module.StartYear}"></td>
+            <td><a th:href="@{/module/{id} (id=${aNm.module.id})}" th:text="${aNm.module.moduleName}"></a></td>
+            <td th:text="${aNm.module.moduleNumber}"></td>
+            <!--            <td th:text="${aNm.assessments}"></td>-->
+            <td>
+                <table>
+                    <tr th:each="assessment: ${aNm.assessments}">
+                        <td><a th:href="@{/assessment/{id} (id=${assessment.id})}" th:text="${assessment.assessmentName}"></a></td>
+                        <td th:text="${assessment.weighting}"></td>
+                        <td th:text="${assessment.assessmentReady}"></td><td th:text="${assessment.intModerated}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

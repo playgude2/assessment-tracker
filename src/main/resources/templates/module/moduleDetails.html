@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<h1><span th:text="${module.StartYear}"></span> Module: <span th:text="${module.moduleName}"></span>
+    <a th:href="@{/module/{id} (id=${module.id})}"><span th:text="${module.moduleNumber}"></span></a></h1>
+
+
+<div>
+    <table>
+        <thead>
+        <tr>
+
+            <th>index</th><th>Name</th><th>Weighting</th><th>ready</th><th>int Moderated</th>
+
+        </thead>
+        <tbody>
+        <tr th:each="assessment, iStat : ${assessments}">
+            <td th:text="${iStat.index}"></td>
+            <td><a th:href="@{/assessment/{id} (id=${assessment.id})}" th:text="${assessment.assessmentName}"></a></td>
+            <td th:text="${assessment.weighting}"></td>
+            <td th:text="${assessment.assessmentReady}"></td><td th:text="${assessment.intModerated}"></td>
+
+        </tbody>
+
+    </table>
+</div>
+
+
+<div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>

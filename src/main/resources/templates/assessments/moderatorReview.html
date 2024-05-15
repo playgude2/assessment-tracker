@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<h1><span th:text="${module.StartYear}"></span> Module: <span th:text="${module.moduleName}"></span>
+    <a th:href="@{/module/{id} (id=${module.id})}"><span th:text="${module.moduleNumber}"></span></a></h1>
+<h2>Internal Moderator Form:</h2>
+Assessment Name: <a th:href="@{/assessment/{id} (id=${assessment.id})}"><span th:text="${assessment.assessmentName}" type="text"></span></a><br>
+
+<form th:action="@{/assessment/moderatorReview/{id} (id=${assessment.id})}" method="POST" id="readyForm" name="readyForm" th:object="${assessment}">
+    <input th:field="*{id}" type="hidden" th:value="0"/>
+    <label>Internally moderated:
+        <input th:field="*{intModerated}" type="checkbox" name="intModerated">
+    </label><br>
+    <div th:errors="*{intModerated}" th:if="${#fields.hasErrors('intModerated')}">intModerated Error</div>
+
+    <label>Internally moderated Date:
+        <input th:field="*{intModeratedDate}" type="date" required name="intModeratedDate">
+    </label><br>
+    <div th:errors="*{intModeratedDate}" th:if="${#fields.hasErrors('intModeratedDate')}">intModeratedDate Error</div>
+
+    <label>Internally moderated Comments:
+        <textarea th:field="*{intModComments}" type="text" rows="4" cols="50" name="intModComments"></textarea>
+    </label><br>
+    <div th:errors="*{intModComments}" th:if="${#fields.hasErrors('intModComments')}">Internally moderated Comments Error</div>
+
+    <input type="submit" value="Edit">
+</form>
+
+
+<div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>

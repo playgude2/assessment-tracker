@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Menu</title>
+    <link th:replace="fragments/header :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+Hi <span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span>,
+Here are your details:
+<div th:replace="fragments/components :: yearPicker"/></div>
+
+<h1>Modules you are leading</h1>
+<div th:replace="fragments/moduleAssessmentTables :: moduleAssessmentTable(modules=${leadModules})"/></div>
+
+
+<h1>Modules you are moderating</h1>
+<div th:replace="fragments/moduleAssessmentTables :: moduleAssessmentTable(modules=${modModules})"/></div>
+
+
+<div th:replace="fragments/footer :: siteFooter"/></div>
+</body>
+</html>
